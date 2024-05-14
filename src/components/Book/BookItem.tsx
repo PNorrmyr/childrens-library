@@ -2,12 +2,16 @@ import BookType from '../../models/Book'
 import './BookItem.css'
 
 type Props = {
-  book : BookType
+  book : BookType,
+  setSelectedBook : (id : number) => void
+  
 }
 
-function BookItem({ book } : Props) {
+
+
+function BookItem({ book, setSelectedBook } : Props) {
   return (
-    <section className='book-card'>
+    <section onClick= { () => setSelectedBook(book.id) }className='book-card'>
         <p className="book-title">{ book.title }</p>
         <p className="book-author">{ book.author }</p>
     </section>

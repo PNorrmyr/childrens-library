@@ -3,9 +3,13 @@ import axios from 'axios'
 import BookItem from '../Book/BookItem'
 import BookType from '../../models/Book'
 import './booklist.css'
+import { Link } from 'react-router-dom'
 
+type Props = {
+  setSelectedBook : (id : number | undefined ) => void
+}
 
-function BookList() {
+function BookList({ setSelectedBook } : Props) {
 	const [booklist, setBooklist] = useState<BookType[]>()
 
 	useEffect(() => {
@@ -15,16 +19,23 @@ function BookList() {
 		})
 	}, [])
 
+
 	console.log(booklist);
 
   return (
     <section className='page-booklist'>
         <div className="booklist-content-wrapper">
-            {
-                booklist?.map(book => {
-                    return <BookItem key={ book.id } book = { book } />
-                })
-            }
+          <Link to={ book }>
+              {
+                  booklist?.map(book => {
+                      return <BookItem
+                              setSelectedBook = { setSelectedBook }
+                              key ={ book.id } 
+                              book = { book } 
+                            />
+                  })
+              }
+          </Link>
         </div>
     </section>
   )
