@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import BookItem from '../Book/BookItem'
 import BookType from '../../models/Book'
+import './booklist.css'
 
 
 function BookList() {

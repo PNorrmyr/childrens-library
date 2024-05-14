@@ -1,0 +1,15 @@
+.book-card {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items:stretch;
+
+
+    background-color: aqua;
+}
+
+.book-title, .book-author{
+    padding-left: 3rem;
+
+}
