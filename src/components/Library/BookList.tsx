@@ -1,41 +1,27 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
 import BookItem from '../Book/BookItem'
 import BookType from '../../models/Book'
 import './booklist.css'
-import { Link } from 'react-router-dom'
 
 type Props = {
-  setSelectedBook : (id : number | undefined ) => void
+  setSelectedBookId : (id : number | undefined ) => void,
+  bookList : BookType[]
 }
 
-function BookList({ setSelectedBook } : Props) {
-	const [booklist, setBooklist] = useState<BookType[]>()
+function BookList({ bookList, setSelectedBookId } : Props) {
 
-	useEffect(() => {
-		axios.get('https://santosnr6.github.io/Data/childrens_books.json')
-		.then(response => {
-			setBooklist(response.data);
-		})
-	}, [])
-
-
-	console.log(booklist);
 
   return (
     <section className='page-booklist'>
         <div className="booklist-content-wrapper">
-          <Link to={ book }>
               {
-                  booklist?.map(book => {
+                  bookList?.map(book => {
                       return <BookItem
-                              setSelectedBook = { setSelectedBook }
+                              setSelectedBookId = { setSelectedBookId }
                               key ={ book.id } 
                               book = { book } 
                             />
                   })
               }
-          </Link>
         </div>
     </section>
   )

@@ -2,22 +2,41 @@ import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Library from './pages/Library'
 import DetailedView from './pages/DetailedView'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import BookType from './models/Book'
 
 
 
 function App() {
-	const [selectedBook, setSelectedBook] = useState<number>();
+	const [selectedBookId, setSelectedBookId] = useState<number>();
+	const [bookList, setBookList] = useState<BookType[]>([])
 
-	console.log(selectedBook);
+	useEffect(() => {
+		axios.get('https://santosnr6.github.io/Data/childrens_books.json')
+		.then(response => {
+			setBookList(response.data);
+		})
+	}, [])
+
+
+	console.log(bookList);
+	console.log(selectedBookId);
 	
 
   return (
     <div className="app">
     	<Routes>
 			<Route path='/' element={ <Library 
-			setSelectedBook = { setSelectedBook } /> }/>
-			<Route path='/:id' element={ <DetailedView /> } />
+										setSelectedBookId = { setSelectedBookId }
+										bookList = { bookList } 
+										/> 
+									}/>
+			<Route path='/book/:id' 
+				element={ <DetailedView 
+						   bookList = { bookList }
+						   /> 
+						} />
 
     	</Routes>
 	</div>

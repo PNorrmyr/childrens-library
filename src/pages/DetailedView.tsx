@@ -1,8 +1,17 @@
+import BookArticle from "../components/Book/BookArticle"
+import BookType from '../models/Book'
 
-function DetailedView() {
+type Props = {
+  bookList : BookType[]
+}
+
+function DetailedView({ bookList } : Props) {
+
+
+
   return (
     <div>
-      
+      <BookArticle bookList = { bookList } />
     </div>
   )
 }
