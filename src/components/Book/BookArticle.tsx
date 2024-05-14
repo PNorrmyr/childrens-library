@@ -1,24 +1,11 @@
-import { useParams } from 'react-router-dom'
 import BookType from '../../models/Book'
 
 type Props = {
-    bookList : BookType[]
+    book : BookType
   }
 
-function BookArticle({ bookList } : Props) {
-  const { id } = useParams()
-  let bookId : number
+function BookArticle({ book } : Props) {
 
-  if( id !== undefined) {
-    bookId = parseInt(id)
-  }
-
-  const book : BookType | undefined= bookList.find(book => {book.id === bookId})
-
-  if(!book) {
-    return <section>Book not found</section>
-  }
-  
 
 
   return (

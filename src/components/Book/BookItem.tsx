@@ -13,7 +13,7 @@ type Props = {
 function BookItem({ book, setSelectedBookId } : Props) {
 
   return (
-	<Link to={`/${ book.id }`}>
+	<Link to={`/book/${ book.id }`}>
 		<section onClick= { () => setSelectedBookId(book.id) } className='book-card'>
 			<p className="book-title">{ book.title }</p>
 			<p className="book-author">{ book.author }</p>
