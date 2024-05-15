@@ -27,11 +27,12 @@ function App() {
   return (
     <div className="app">
     	<Routes>
-			<Route path='/' element={ <Library 
-										setSelectedBookId = { setSelectedBookId }
-										bookList = { bookList } 
-										/> 
-									}/>
+			<Route path='/' 
+				element={ <Library 		
+							setSelectedBookId = { setSelectedBookId }
+							bookList = { bookList } 
+							/> 
+						}/>
 			<Route path='/book/:id' 
 				element={ <DetailedView 
 						   bookList = { bookList }

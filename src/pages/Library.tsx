@@ -1,5 +1,6 @@
 import BookList from "../components/Library/BookList"
 import BookType from '../models/Book'
+import '../App.css'
 
 type Props = {
   bookList : BookType[],
@@ -8,7 +9,7 @@ type Props = {
 
 function Library({ bookList, setSelectedBookId } : Props) {
   return (
-    <section className="Library">
+    <section className="library">
         <h1>8 Classic Children Books</h1>
 
         <section className="book-wrapper">
